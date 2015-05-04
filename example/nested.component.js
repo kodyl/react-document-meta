@@ -10,7 +10,7 @@ export default class Nested extends React.Component {
           canonical: 'http://example.com/path/to/sub-page'
         }
       },
-      merge: true
+      extend: true
     };
 
     return (
