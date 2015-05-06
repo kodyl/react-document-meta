@@ -27,6 +27,9 @@ class Example extends React.Component {
         name: {
           keywords: 'react,meta,document,html,tags'
         }
+      },
+      auto: {
+        ograph: true
       }
     };
 
