@@ -1,4 +1,4 @@
-React Document Meta
+React Document Meta [![Build Status](https://travis-ci.org/boligbesked/react-document-meta.svg)](https://travis-ci.org/boligbesked/react-document-meta) [![npm version](https://badge.fury.io/js/react-document-meta.svg)](http://badge.fury.io/js/react-document-meta)
 ===================
 
 HTML meta tags for React-based apps. Works for both client- and server-side rendering, and has a strict but flexible API.
