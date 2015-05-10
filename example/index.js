@@ -9,6 +9,10 @@ class Example extends React.Component {
       description: 'I am a description, and I can create multiple tags',
       canonical: 'http://example.com/path/to/page',
       meta: {
+        charset: 'utf-8',
+        name: {
+          keywords: 'react,meta,document,html,tags'
+        },
         itemProp: {
           name: 'The Name or Title Here',
           description: 'This is the page description',
@@ -23,9 +27,6 @@ class Example extends React.Component {
           'og:price:currency': 'USD',
           'twitter:site': '@site',
           'twitter:title': 'I am a Twitter title'
-        },
-        name: {
-          keywords: 'react,meta,document,html,tags'
         }
       },
       auto: {

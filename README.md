@@ -40,5 +40,4 @@ Server Usage
 TODO:
 -------------------
 - [ ] Test coverage
-- [ ] Simple meta-tags like `<meta charset="utf-8" />`, using: `{ meta: { charset: 'utf-8' } }`
 - [ ] Create full documentation
