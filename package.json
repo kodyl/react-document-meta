@@ -31,7 +31,7 @@
   "dependencies": {
     "react-side-effect": "0.3.0"
   },
-  "repository": "danieljuhl/react-document-meta",
+  "repository": "boligbesked/react-document-meta",
   "author": "Daniel Juhl",
   "license": "MIT"
 }
