@@ -28,7 +28,7 @@ Usage
 -------------------
 See `example` folder for a working sample.
 
-```
+```javascript
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
 
