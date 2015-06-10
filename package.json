@@ -1,6 +1,6 @@
 {
   "name": "react-document-meta",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Declarative, nested and stateful HTML document meta tags for React",
   "main": "./dist/index",
   "scripts": {
@@ -32,7 +32,7 @@
   "dependencies": {
     "react-side-effect": "0.3.0"
   },
-  "repository": "boligbesked/react-document-meta",
+  "repository": "kodyl/react-document-meta",
   "author": "Daniel Juhl",
   "license": "MIT"
 }
