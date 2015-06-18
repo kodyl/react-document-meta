@@ -16,7 +16,7 @@ npm install --save react-document-meta
 
 Peer dependencies: React >= 0.11.0
 
-It has only been testes with React 0.13, but should work back to 0.11 - testing is more than welcome!
+It has only been testet with React 0.13, but should work back to 0.11.
 
 
 Features
@@ -61,8 +61,8 @@ React.render(<Example />, document.getElementById('root'));
 ### Nesting
 In most real world use cases, you would like to set some defaults and modify, replace or add just some of the meta tags. `react-document-meta` always use the deepest data set, but you can add an `extend` attribute (`<DocumentMeta {...metaData} extend />`), to instruct the component to merge with the meta data specified one level up. You can add the `extend` attribute to as many `DocumentMeta` components you would like, but the chain needs to be complete.
 
-### Automatic meta tags
-`react-document-meta` has the ability to generate meta tags based on the already provided meta data. Currently only open graph title, description and url is supported, which uses the data from `title`, `description` and `canonical`, and only in the case where the values has not be explicit set for `og:title`, `og:description` or `og:url` respectively.
+### Automatic Meta Tags
+`react-document-meta` has the ability to generate meta tags based on the already provided meta data. Currently only open graph title, description and url is supported, which uses the data from `title`, `description` and `canonical`, and only in the case where the values has not been explicit set for `og:title`, `og:description` or `og:url` respectively.
 
 
 Server Usage
