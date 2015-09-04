@@ -71,9 +71,10 @@ In most real world use cases, you would like to set some defaults and modify, re
 
 Server Usage
 -------------------
-When using `react-document-meta` in a project with server-side rendering, you would like to have the final meta data chunk available in your HTML output. You can achieve this by calling `DocumentMeta.rewind();` with an optional argument, about how you would like the response. When called with no arguments, you will get the combined meta data as an object as set. `DocumentMeta.rewind( { asReact: true } );` will render to React markup and `DocumentMeta.rewind( { asHtml: true } );` will render to static markup.
+When using `react-document-meta` in a project with server-side rendering, you would like to have the final meta data chunk available in your HTML output. You can achieve this by calling `DocumentMeta.rewind()`.
 
-**Notice: This argument syntax is very likely to change in v1.0.0**
+Instead of getting a plain object, you can have the module return the meta as either React components or a HTML string. This is achieved by calling `DocumentMeta.renderAsReact()` or `DocumentMeta.renderAsHTML()`.
+
 
 TODO:
 -------------------
