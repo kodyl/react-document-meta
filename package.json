@@ -32,7 +32,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
-    "react-side-effect": "^1.0.0"
+    "react-side-effect": "^1.0.1"
   },
   "repository": "kodyl/react-document-meta",
   "author": "Daniel Juhl",
