@@ -1,6 +1,6 @@
 {
   "name": "react-document-meta",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "Declarative, nested and stateful HTML document meta tags for React",
   "main": "./dist/index",
   "scripts": {
