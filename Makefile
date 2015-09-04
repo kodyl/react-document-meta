@@ -11,18 +11,12 @@ dist/%.js: lib/%.js
 	@mkdir -p $(@D)
 	$(BIN)/babel $< -o $@ --stage 0
 
-clean:
-	@rm -rf ./dist
+lint:
+	@ $(BIN)/eslint ./lib ./example
 
-build: test clean dist test-build
-
-dev:
-	@node ./example/server.js
-
-test:
+test: lint
 	@echo "\nTesting source files, hang on..."
 	@NODE_ENV=test $(BIN)/mocha         \
-		--require mocha-clean             \
 		--require lib/__tests__/testdom   \
 		--require lib/__tests__/babelinit \
 		./lib/__tests__/*.test.js
@@ -30,8 +24,15 @@ test:
 test-build:
 	@echo "\nTesting build files, almost there..!"
 	@NODE_ENV=test $(BIN)/mocha         \
-		--require mocha-clean             \
 		--require dist/__tests__/testdom  \
 		./dist/__tests__/*.test.js
+
+clean:
+	@rm -rf ./dist
+
+build: test clean dist test-build
+
+dev:
+	@node ./example/server.js
 
 .PHONY: install dev test clean dist test-build build
