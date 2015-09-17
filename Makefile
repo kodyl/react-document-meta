@@ -35,4 +35,7 @@ build: test clean dist test-build
 dev:
 	@node ./example/server.js
 
+release: build
+	@ npm publish
+
 .PHONY: install dev test clean dist test-build build
