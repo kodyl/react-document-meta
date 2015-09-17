@@ -17,6 +17,11 @@ npm install --save react-document-meta
 Note: React Side Effect requires React 0.13+ - and so does React Document Meta.
 
 
+Using with React v0.14
+-------------------
+Due to several deprecations and breaking changes to React, you'll have to use `react-document-meta@2.0.0-rc2`.
+
+
 Upgrading from 0.1.x to 1.x
 -------------------
 
