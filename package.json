@@ -14,9 +14,6 @@
     "tags",
     "react-component"
   ],
-  "peerDependencies": {
-    "react": ">= 0.13.0"
-  },
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.23",
@@ -26,12 +23,15 @@
     "eslint-plugin-react": "^3.3.1",
     "jsdom": "^6.3.0",
     "mocha": "^2.3.0",
-    "react": "^0.13.0",
+    "react": "^0.14.0-rc1",
+    "react-addons-test-utils": "^0.14.0-rc1",
     "react-hot-loader": "^1.3.0",
     "webpack": "^1.12.1",
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "exenv": "^1.2.0",
+    "react-dom": "^0.14.0-rc1",
     "react-side-effect": "^1.0.1"
   },
   "repository": "kodyl/react-document-meta",
