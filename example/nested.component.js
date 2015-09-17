@@ -3,8 +3,9 @@ import DocumentMeta from '../lib';
 
 export default class Nested extends React.Component {
   render() {
-    const docMeta = {
+    const DOC_META = {
       title: 'This Nested Title Has Precedence',
+      description: null,
       link: {
         rel: {
           canonical: 'http://example.com/path/to/sub-page'
@@ -14,7 +15,7 @@ export default class Nested extends React.Component {
     };
 
     return (
-      <DocumentMeta {...docMeta} />
+      <DocumentMeta {...DOC_META} extend />
     );
   }
 }
