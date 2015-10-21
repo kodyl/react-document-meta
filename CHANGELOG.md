@@ -1,8 +1,8 @@
-v2.0.0-rc2
+v2.0.0
 --------------------
 
 #### Breaking Changes
-- React >= v0.14.0-rc1 is required as of v2.0.0-rc1
+- React >= v0.14.0 is required as of v2.0.0
 
 
 v1.1.0
