@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "env": {
-  	"browser": true,
+    "browser": true,
     "node": true,
     "mocha": true
   },
@@ -11,8 +11,9 @@
   "plugins": [
     "react"
   ],
-	"extends": "eslint:recommended",
-	"rules": {
-		"no-console": 0
-	}
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-console": 0,
+    "react/jsx-uses-react": 1
+  }
 }

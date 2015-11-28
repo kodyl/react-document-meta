@@ -1,5 +1,4 @@
 import React from 'react';
-import Nested from './nested';
 import DocumentMeta from '../../lib';
 
 export default class Root extends React.Component {
