@@ -33,7 +33,10 @@ clean:
 build: test clean dist test-build
 
 dev:
-	@node ./example/server.js
+	@ node ./example/client-side/server.js
+
+dev-ssr:
+	@ babel-node ./example/server-side/server.js
 
 release: build
 	@ npm publish

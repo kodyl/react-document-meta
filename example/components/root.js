@@ -1,15 +1,15 @@
 import React from 'react';
-import Nested from './nested.component';
-import DocumentMeta from '../lib';
+import Nested from './nested';
+import DocumentMeta from '../../lib';
 
-class Example extends React.Component {
+export default class Root extends React.Component {
   render() {
-    const docMeta = {
+    const meta = {
       title: 'Some Meta Title',
       description: 'I am a description, and I can create multiple tags',
       canonical: 'http://example.com/path/to/page',
       meta: {
-        charset: 'utf-8',
+        charSet: 'utf-8',
         name: {
           keywords: 'react,meta,document,html,tags'
         },
@@ -36,13 +36,10 @@ class Example extends React.Component {
 
     return (
       <div>
-        <DocumentMeta {...docMeta} />
+        <DocumentMeta {...meta} />
         <h1>Hello World!</h1>
-        <Nested />
+        { this.props.children }
       </div>
     );
   }
 }
-
-
-React.render(<Example />, document.getElementById('root'));
