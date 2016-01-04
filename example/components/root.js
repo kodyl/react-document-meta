@@ -34,11 +34,10 @@ export default class Root extends React.Component {
     };
 
     return (
-      <div>
-        <DocumentMeta {...meta} />
+      <DocumentMeta {...meta}>
         <h1>Hello World!</h1>
         { this.props.children }
-      </div>
+      </DocumentMeta>
     );
   }
 }
