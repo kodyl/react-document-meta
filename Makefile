@@ -9,16 +9,16 @@ install:
 dist: $(DIST)
 dist/%.js: lib/%.js
 	@mkdir -p $(@D)
-	$(BIN)/babel $< -o $@ --stage 0
+	$(BIN)/babel $< -o $@
 
 lint:
 	@ $(BIN)/eslint ./lib ./example
 
 test: lint
 	@echo "\nTesting source files, hang on..."
-	@NODE_ENV=test $(BIN)/mocha         \
-		--require lib/__tests__/testdom   \
-		--require lib/__tests__/babelinit \
+	@NODE_ENV=test $(BIN)/mocha          \
+		--require babel-register \
+		--require lib/__tests__/testdom    \
 		./lib/__tests__/*.test.js
 
 test-build:
