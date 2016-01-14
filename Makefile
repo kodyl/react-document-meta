@@ -16,9 +16,9 @@ lint:
 
 test: lint
 	@echo "\nTesting source files, hang on..."
-	@NODE_ENV=test $(BIN)/mocha          \
-		--require babel-register \
-		--require lib/__tests__/testdom    \
+	@NODE_ENV=test $(BIN)/babel-istanbul cover  \
+		./node_modules/mocha/bin/_mocha --        \
+		--require lib/__tests__/testdom           \
 		./lib/__tests__/*.test.js
 
 test-build:
