@@ -27,8 +27,12 @@ test-build:
 		--require dist/__tests__/testdom  \
 		./dist/__tests__/*.test.js
 
+coveralls:
+	@cat ./coverage/lcov.info | $(BIN)/coveralls
+
 clean:
 	@rm -rf ./dist
+	@rm -rf ./coverage
 
 build: test clean dist test-build
 
