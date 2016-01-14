@@ -14,12 +14,12 @@ Installation
 npm install --save react-document-meta
 ```
 
-Note: React Side Effect requires React 0.13+ - and so does React Document Meta.
+Note: React Side Effect requires React 0.14+ - and so does React Document Meta.
 
 
-Using with React v0.14
+Using with React v0.13
 -------------------
-Due to several deprecations and breaking changes to React, you'll have to use `react-document-meta@2.0.0-rc2`.
+Due to several deprecations and breaking changes to React, you'll have to use `react-document-meta@^1.0.0`.
 
 
 Upgrading from 0.1.x to 1.x
@@ -43,7 +43,7 @@ import DocumentMeta from 'react-document-meta';
 
 class Example extends React.Component {
   render() {
-    const metaData = {
+    const meta = {
       title: 'Some Meta Title',
       description: 'I am a description, and I can create multiple tags',
       canonical: 'http://example.com/path/to/page',
@@ -57,7 +57,7 @@ class Example extends React.Component {
 
     return (
       <div>
-        <DocumentMeta {...metaData} />
+        <DocumentMeta {...meta} />
         <h1>Hello World!</h1>
       </div>
     );
@@ -83,5 +83,5 @@ Instead of getting a plain object, you can have the module return the meta as ei
 
 TODO:
 -------------------
-- [ ] Test coverage
 - [ ] Create full documentation
+- [ ] Improve flexibility for custom attributes
