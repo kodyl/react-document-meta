@@ -1,10 +1,10 @@
 import React from 'react';
 import DocumentMeta from '../../lib';
 
-export default class Nested extends React.Component {
+export default class PageOne extends React.Component {
   render() {
     const meta = {
-      title: 'This Nested Title Has Precedence',
+      title: 'Page One: This Nested Title Has Precedence',
       description: null,
       link: {
         rel: {
@@ -15,7 +15,9 @@ export default class Nested extends React.Component {
     };
 
     return (
-      <DocumentMeta {...meta} extend />
+      <DocumentMeta {...meta} extend>
+        <h2>I am Page One</h2>
+      </DocumentMeta>
     );
   }
 }

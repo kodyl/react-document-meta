@@ -4,6 +4,7 @@ v2.0.2
 #### Internal
 - Update `babel` to `6.x`
 - Added code-coverage ([markdalgleish](https://github.com/markdalgleish))
+- Added multiple nested pages to the client-side example
 
 
 v2.0.1
