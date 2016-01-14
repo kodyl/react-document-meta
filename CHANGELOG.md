@@ -1,3 +1,21 @@
+v2.0.2
+--------------------
+
+#### Internal
+- Update `babel` to `6.x`
+- Added code-coverage ([markdalgleish](https://github.com/markdalgleish))
+
+
+v2.0.1
+--------------------
+
+#### Bugs
+- Fix issue with cloning/rendering children
+
+#### Internal
+- Added server-side rendering example
+
+
 v2.0.0
 --------------------
 
@@ -9,17 +27,17 @@ v1.1.0
 --------------------
 
 #### Features
-- passing null as value resets any previous declared value and remove the meta tag
+- Passing null as value resets any previous declared value and remove the meta tag
 
 #### Bugs
-- allow array of strings as value in prop type validation
+- Allow array of strings as value in prop type validation
 
 
 v1.0.1
 --------------------
 
 #### Bugs
-- avoid crashing when trying to render without any props mounted
+- Avoid crashing when trying to render without any props mounted
 
 
 v1.0.0
