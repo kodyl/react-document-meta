@@ -12,6 +12,7 @@ dist/%.js: lib/%.js
 	$(BIN)/babel $< -o $@
 
 lint:
+	@ echo "\nLinting source files, hang on..."
 	@ $(BIN)/eslint ./lib ./example
 
 test: lint
