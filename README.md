@@ -80,6 +80,30 @@ When using `react-document-meta` in a project with server-side rendering, you wo
 
 Instead of getting a plain object, you can have the module return the meta as either React components or a HTML string. This is achieved by calling `DocumentMeta.renderAsReact()` or `DocumentMeta.renderAsHTML()`.
 
+```javascript
+import React from 'react';
+import DocumentMeta from 'react-document-meta';
+
+export default handler = (...args) => {
+  ...
+  const app = React.renderToString(components);
+  const meta = DocumentMeta.renderAsHTML();
+  const markup = `
+    <html>
+      <head>
+        ${meta}
+      </head>
+      <body>
+        <div id="app">
+          ${app}
+        </div>
+      </body>
+    </html>
+  `
+  ...
+}
+```
+
 
 TODO:
 -------------------
