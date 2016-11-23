@@ -41,7 +41,7 @@ dev:
 	@ node ./example/client-side/server.js
 
 dev-ssr:
-	@ babel-node ./example/server-side/server.js
+	@ $(BIN)/babel-node ./example/server-side/server.js
 
 release: build
 	@ npm publish

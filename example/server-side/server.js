@@ -2,7 +2,7 @@ import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Root from '../components/root';
-import Nested from '../components/nested';
+import Nested from '../components/page-one';
 import DocumentMeta from '../../lib';
 
 const server = express();

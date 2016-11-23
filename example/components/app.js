@@ -3,7 +3,7 @@ import Root from './root';
 import PageOne from './page-one';
 import PageTwo from './page-two';
 
-const pages = [PageOne, PageTwo ];
+const pages = [PageOne, PageTwo];
 
 export default class App extends React.Component {
   constructor(props) {
