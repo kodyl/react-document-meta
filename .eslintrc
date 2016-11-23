@@ -18,7 +18,8 @@
   ],
   "extends": "eslint:recommended",
   "rules": {
-    "no-console": 0,
-    "react/jsx-uses-react": 1
+    "no-console": 1,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 1
   }
 }
