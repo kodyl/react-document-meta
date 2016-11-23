@@ -1,4 +1,4 @@
-React Document Meta [![Build Status](https://travis-ci.org/kodyl/react-document-meta.svg)](https://travis-ci.org/kodyl/react-document-meta) [![Coverage Status](https://coveralls.io/repos/kodyl/react-document-meta/badge.svg?branch=master&service=github)](https://coveralls.io/github/kodyl/react-document-meta?branch=master) [![npm version](https://badge.fury.io/js/react-document-meta.svg)](http://badge.fury.io/js/react-document-meta)
+React Document Meta [![Build Status](https://travis-ci.org/kodyl/react-document-meta.svg)](https://travis-ci.org/kodyl/react-document-meta) [![Coverage Status](https://coveralls.io/repos/github/kodyl/react-document-meta/badge.svg?branch=master)](https://coveralls.io/github/kodyl/react-document-meta?branch=master) [![npm version](https://badge.fury.io/js/react-document-meta.svg)](http://badge.fury.io/js/react-document-meta)
 ===================
 
 HTML meta tags for React-based apps. Works for both client- and server-side rendering, and has a strict but flexible API.
