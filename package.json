@@ -36,7 +36,6 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "exenv": "^1.2.0",
     "react": ">=0.14.0",
     "react-dom": ">=0.14.0",
     "react-side-effect": "^1.0.1"
