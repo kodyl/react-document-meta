@@ -16,7 +16,7 @@ var _ = require('../');
 
 var _2 = _interopRequireDefault(_);
 
-var _utils = require('../utils');
+var _dom = require('../dom');
 
 var _testUtils = require('./test-utils');
 
@@ -45,7 +45,7 @@ describe('DocumentMeta - DOM basic', function () {
 
   beforeEach(function () {
     _2.default.canUseDOM = true;
-    (0, _utils.removeDocumentMeta)();
+    (0, _dom.removeDocumentMeta)();
     _reactAddonsTestUtils2.default.renderIntoDocument(_react2.default.createElement(_2.default, DOC_META));
   });
 
@@ -66,18 +66,40 @@ describe('DocumentMeta - DOM basic', function () {
   });
 
   it('should render normal meta tags, eg. <meta name="..." content="...">', function () {
-    Object.keys(DOC_META.meta.name).reduce(function (name) {
+    Object.keys(DOC_META.meta.name).forEach(function (name) {
       _assert2.default.strictEqual((0, _testUtils.getAttr)('meta[name=' + name + ']', 'content'), DOC_META.meta.name[name], '<meta name="' + name + '" ... /> has not been rendered correctly');
     });
   });
 
   it('should render normal link tags, eg. <link rel="..." href="...">', function () {
-    Object.keys(DOC_META.link.rel).reduce(function (rel) {
+    Object.keys(DOC_META.link.rel).forEach(function (rel) {
       var values = Array.isArray(DOC_META.link.rel[rel]) ? DOC_META.link.rel[rel] : [DOC_META.link.rel[rel]];
+      var idx = 0;
       var elements = (0, _testUtils.getElements)('link[rel=' + rel + ']');
-      elements.forEach(function (element, idx) {
-        _assert2.default.strictEqual(element.getAttribute('content'), values[idx], '<link rel="' + rel + '" ... /> has not been rendered correctly');
-      });
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var element = _step.value;
+
+          _assert2.default.strictEqual(element.getAttribute('href'), values[idx++], '<link rel="' + rel + '" ... /> has not been rendered correctly');
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
     });
   });
 });
