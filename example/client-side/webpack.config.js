@@ -15,16 +15,14 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
-  resolve: {
-    extensions: ['', '.js']
-  },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loaders: [
-        'react-hot', 'babel-loader?cacheDirectory=true'
+      use: [
+        { loader: 'react-hot-loader' },
+        { loader: 'babel-loader?cacheDirectory=true' }
       ],
       exclude: /node_modules/
     }]
