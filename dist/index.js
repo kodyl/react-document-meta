@@ -14,6 +14,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _server = require('react-dom/server');
 
 var _reactSideEffect = require('react-side-effect');
@@ -204,13 +208,13 @@ var DocumentMeta = function (_Component) {
 }(_react.Component);
 
 DocumentMeta.propTypes = {
-  title: _react.PropTypes.string,
-  description: _react.PropTypes.string,
-  base: _react.PropTypes.string,
-  canonical: _react.PropTypes.string,
-  meta: _react.PropTypes.objectOf(_react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.objectOf(_react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.arrayOf(_react.PropTypes.string)]))])),
-  link: _react.PropTypes.objectOf(_react.PropTypes.objectOf(_react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.arrayOf(_react.PropTypes.string)]))),
-  auto: _react.PropTypes.objectOf(_react.PropTypes.bool)
+  title: _propTypes2.default.string,
+  description: _propTypes2.default.string,
+  base: _propTypes2.default.string,
+  canonical: _propTypes2.default.string,
+  meta: _propTypes2.default.objectOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.objectOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]))])),
+  link: _propTypes2.default.objectOf(_propTypes2.default.objectOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]))),
+  auto: _propTypes2.default.objectOf(_propTypes2.default.bool)
 };
 
 

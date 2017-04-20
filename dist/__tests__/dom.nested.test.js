@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactAddonsTestUtils = require('react-addons-test-utils');
+var _testUtils = require('react-dom/test-utils');
 
-var _reactAddonsTestUtils2 = _interopRequireDefault(_reactAddonsTestUtils);
+var _testUtils2 = _interopRequireDefault(_testUtils);
 
 var _ = require('../');
 
@@ -20,7 +20,7 @@ var _2 = _interopRequireDefault(_);
 
 var _dom = require('../dom');
 
-var _testUtils = require('./test-utils');
+var _testUtils3 = require('./test-utils');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -62,7 +62,7 @@ describe('DocumentMeta - DOM nested', function () {
   beforeEach(function () {
     _2.default.canUseDOM = true;
     (0, _dom.removeDocumentMeta)();
-    _reactAddonsTestUtils2.default.renderIntoDocument(_react2.default.createElement(
+    _testUtils2.default.renderIntoDocument(_react2.default.createElement(
       'div',
       null,
       _react2.default.createElement(_2.default, DOC_META),
@@ -79,21 +79,21 @@ describe('DocumentMeta - DOM nested', function () {
   });
 
   it('should render <meta name="description" content="..."> according to the nested description-prop', function () {
-    _assert2.default.strictEqual((0, _testUtils.getAttr)('meta[name=description]', 'content'), DOC_META_NESTED.description);
+    _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[name=description]', 'content'), DOC_META_NESTED.description);
   });
 
   it('should render <link rel="canonical" href="..." according to the nested canonical-prop', function () {
-    _assert2.default.strictEqual((0, _testUtils.getAttr)('link[rel=canonical]', 'href'), DOC_META_NESTED.canonical);
+    _assert2.default.strictEqual((0, _testUtils3.getAttr)('link[rel=canonical]', 'href'), DOC_META_NESTED.canonical);
   });
 
   it('should render simple meta tags, eg. <meta charset="...">', function () {
-    _assert2.default.strictEqual((0, _testUtils.getAttr)('meta[charset]', 'charset'), DOC_META.meta.charset);
+    _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[charset]', 'charset'), DOC_META.meta.charset);
   });
 
   it('should render normal meta tags, eg. <meta name="..." content="...">', function () {
     Object.keys(DOC_META.meta.name).forEach(function (name) {
       var value = DOC_META_NESTED.meta.name.hasOwnProperty(name) ? DOC_META_NESTED.meta.name[name] : DOC_META.meta.name[name];
-      _assert2.default.strictEqual((0, _testUtils.getAttr)('meta[name=' + name + ']', 'content'), value, '<meta name="' + name + '" ... /> has not been rendered correctly');
+      _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[name=' + name + ']', 'content'), value, '<meta name="' + name + '" ... /> has not been rendered correctly');
     });
   });
 
@@ -103,7 +103,7 @@ describe('DocumentMeta - DOM nested', function () {
       var values = Array.isArray(value) ? value : [value];
 
       var idx = 0;
-      var elements = (0, _testUtils.getElements)('link[rel=' + rel + ']');
+      var elements = (0, _testUtils3.getElements)('link[rel=' + rel + ']');
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -135,7 +135,7 @@ describe('DocumentMeta - DOM nested', function () {
     beforeEach(function () {
       _2.default.canUseDOM = true;
       (0, _dom.removeDocumentMeta)();
-      _reactAddonsTestUtils2.default.renderIntoDocument(_react2.default.createElement(
+      _testUtils2.default.renderIntoDocument(_react2.default.createElement(
         _2.default,
         { meta: { name: { l1: 'a' } } },
         _react2.default.createElement(
@@ -154,7 +154,7 @@ describe('DocumentMeta - DOM nested', function () {
       var expected = { l4: 'd', 'l3': 'c' };
       var actual = {};
 
-      var elements = (0, _testUtils.getElements)('meta[name]');
+      var elements = (0, _testUtils3.getElements)('meta[name]');
       var _iteratorNormalCompletion2 = true;
       var _didIteratorError2 = false;
       var _iteratorError2 = undefined;

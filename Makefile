@@ -36,6 +36,8 @@ clean:
 	@ rm -rf ./coverage
 
 build: lint test clean dist test-dist
+	@ git add . && \
+		git commit -am "make build"
 
 dev:
 	@ node ./example/client-side/server.js
@@ -45,5 +47,8 @@ dev-ssr:
 
 release: build
 	@ npm publish
+
+release-patch: build
+	@ npm version patch
 
 .PHONY: install dev test clean dist test-build build
