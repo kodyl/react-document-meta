@@ -1,3 +1,28 @@
+v2.1.2
+--------------------
+
+#### Internal
+- Add `prop-types` to dependencies as `PropTypes` from `react` is deprecated
+- Use `webpack@2` in example
+
+
+v2.1.1
+--------------------
+
+#### Bugs
+- Move `react` and `react-dom` to peerDependencies to avoid loading multiple versions of `react`
+
+
+v2.1.0
+--------------------
+
+#### Features
+- Add `renderToStaticMarkup` as static method on `DocumentMeta`
+
+#### Internal
+- Rewrite as ES6 class
+
+
 v2.0.2
 --------------------
 
@@ -49,4 +74,3 @@ v1.0.0
 
 #### Breaking Changes
 - `DocumentMeta.rewind()` no longer takes an argument with options, and therefore `.rewind({ asReact: true })` and `.rewind({ asHtml: true })` is no longer possible. Two new static methods has been added to support this feature: `.renderAsReact()` and `.renderAsHTML()`
-

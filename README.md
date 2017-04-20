@@ -56,10 +56,9 @@ class Example extends React.Component {
     };
 
     return (
-      <div>
-        <DocumentMeta {...meta} />
+      <DocumentMeta {...meta}>
         <h1>Hello World!</h1>
-      </div>
+      </DocumentMeta>
     );
   }
 }
