@@ -14,6 +14,10 @@ var _ = require('../');
 
 var _2 = _interopRequireDefault(_);
 
+var _server2 = require('../server');
+
+var _server3 = _interopRequireDefault(_server2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 describe('DocumentMeta', function () {
@@ -62,18 +66,6 @@ describe('DocumentMeta', function () {
     });
   });
 
-  describe('.renderAsHTML()', function () {
-    it('returns an empty string if no meta data has been mounted', function () {
-      _react2.default.createElement(_2.default, { title: 'a' }, _react2.default.createElement(_2.default, { title: 'b' }, _react2.default.createElement(_2.default, { title: 'c' })));
-      _assert2.default.strictEqual(_2.default.renderAsHTML(), '');
-    });
-
-    it('returns the latest document meta as HTML', function () {
-      (0, _server.renderToStaticMarkup)(_react2.default.createElement(_2.default, { title: 'a' }, _react2.default.createElement(_2.default, { title: 'b' }, _react2.default.createElement(_2.default, { title: 'c' }))));
-      _assert2.default.strictEqual(_2.default.renderAsHTML(), '<title>c</title>');
-    });
-  });
-
   describe('container element with children', function () {
     it('renders the children', function () {
       var title = 'foo';
@@ -89,6 +81,32 @@ describe('DocumentMeta', function () {
 
       _assert2.default.strictEqual(markup, '<div>Child element</div>');
       _assert2.default.deepEqual(_2.default.rewind(), { title: title });
+    });
+  });
+});
+
+describe('DocumentMetaServer', function () {
+  describe('.renderToStaticMarkup()', function () {
+    it('returns an empty string if no meta data has been mounted', function () {
+      _react2.default.createElement(_2.default, { title: 'a' }, _react2.default.createElement(_2.default, { title: 'b' }, _react2.default.createElement(_2.default, { title: 'c' })));
+      _assert2.default.strictEqual(_server3.default.renderToStaticMarkup(), '');
+    });
+
+    it('returns the latest document meta as HTML', function () {
+      (0, _server.renderToStaticMarkup)(_react2.default.createElement(_2.default, { title: 'a' }, _react2.default.createElement(_2.default, { title: 'b' }, _react2.default.createElement(_2.default, { title: 'c' }))));
+      _assert2.default.strictEqual(_server3.default.renderToStaticMarkup(), '<title>c</title>');
+    });
+  });
+
+  describe('.renderAsHTML()', function () {
+    it('returns an empty string if no meta data has been mounted', function () {
+      _react2.default.createElement(_2.default, { title: 'a' }, _react2.default.createElement(_2.default, { title: 'b' }, _react2.default.createElement(_2.default, { title: 'c' })));
+      _assert2.default.strictEqual(_server3.default.renderAsHTML(), '');
+    });
+
+    it('returns the latest document meta as HTML', function () {
+      (0, _server.renderToStaticMarkup)(_react2.default.createElement(_2.default, { title: 'a' }, _react2.default.createElement(_2.default, { title: 'b' }, _react2.default.createElement(_2.default, { title: 'c' }))));
+      _assert2.default.strictEqual(_server3.default.renderAsHTML(), '<title>c</title>');
     });
   });
 });

@@ -8,7 +8,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+exports.render = render;
 
 var _react = require('react');
 
@@ -17,8 +17,6 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _server = require('react-dom/server');
 
 var _reactSideEffect = require('react-side-effect');
 
@@ -135,11 +133,6 @@ function getTags(_props) {
 
 function render() {
   var meta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var opts = arguments[1];
-
-  if ((typeof opts === 'undefined' ? 'undefined' : _typeof(opts)) !== 'object') {
-    return meta;
-  }
 
   var i = 0;
   var tags = [];
@@ -165,20 +158,10 @@ function render() {
     ));
   }
 
-  getTags(meta).reduce(function (acc, entry) {
+  return getTags(meta).reduce(function (acc, entry) {
     tags.push(renderTag(entry));
     return tags;
   }, tags);
-
-  if (opts.asReact) {
-    return tags;
-  }
-
-  return (0, _server.renderToStaticMarkup)(_react2.default.createElement(
-    'div',
-    null,
-    tags
-  )).replace(/(^<div>|<\/div>$)/g, '').replace(/data-rdm="true"/g, 'data-rdm');
 }
 
 var DocumentMeta = function (_Component) {
@@ -221,16 +204,7 @@ DocumentMeta.propTypes = {
 var DocumentMetaWithSideEffect = (0, _reactSideEffect2.default)(reducePropsTostate, handleStateChangeOnClient)(DocumentMeta);
 
 DocumentMetaWithSideEffect.renderAsReact = function rewindAsReact() {
-  return render(DocumentMetaWithSideEffect.rewind(), { asReact: true });
-};
-
-DocumentMetaWithSideEffect.renderAsHTML = function rewindAsHTML() {
-  return render(DocumentMetaWithSideEffect.rewind(), { asHtml: true });
-};
-
-DocumentMetaWithSideEffect.renderToStaticMarkup = function rewindAsHTML() {
-  return render(DocumentMetaWithSideEffect.rewind(), { asHtml: true });
+  return render(DocumentMetaWithSideEffect.rewind());
 };
 
 exports.default = DocumentMetaWithSideEffect;
-module.exports = exports['default'];
