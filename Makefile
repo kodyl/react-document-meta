@@ -13,20 +13,15 @@ dist/%.js: lib/%.js
 
 lint:
 	@ echo "\nLinting source files, hang on..."
-	@ $(BIN)/eslint ./lib ./example
+	@ yarn lint
 
 test:
 	@ echo "\nTesting source files, hang on..."
-	@ NODE_ENV=test $(BIN)/babel-istanbul cover  \
-		./node_modules/mocha/bin/_mocha --        \
-		--require lib/__tests__/testdom           \
-		./lib/__tests__/*.test.js
+	@ NODE_ENV=test yarn test
 
 test-dist:
 	@ echo "\nTesting build files, almost there..!"
-	@ NODE_ENV=test $(BIN)/mocha         \
-		--require dist/__tests__/testdom  \
-		./dist/__tests__/*.test.js
+	@ NODE_ENV=test yarn test:dist
 
 coveralls:
 	@ cat ./coverage/lcov.info | $(BIN)/coveralls

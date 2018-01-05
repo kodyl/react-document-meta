@@ -4,7 +4,9 @@
   "description": "Declarative, nested and stateful HTML document meta tags for React",
   "main": "./dist/index",
   "scripts": {
-    "test": "make test"
+    "lint": "eslint ./lib ./example",
+    "test": "jest --coverage lib/",
+    "test:dist": "jest dist/"
   },
   "keywords": [
     "react",
@@ -19,6 +21,7 @@
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.2",
     "babel-istanbul": "^0.12.2",
+    "babel-jest": "^22.0.4",
     "babel-loader": "^6.4.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -30,8 +33,8 @@
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
+    "jest": "^22.0.4",
     "jsdom": "^9.12.0",
-    "mocha": "^3.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^1.3.1",
@@ -48,5 +51,26 @@
   },
   "repository": "kodyl/react-document-meta",
   "author": "Daniel Juhl",
-  "license": "MIT"
+  "license": "MIT",
+  "jest": {
+    "collectCoverageFrom": [
+      "lib/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 90,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*[-.]test.js?(x)",
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "setupFiles": [
+      "<rootDir>/lib/__tests__/testdom.js"
+    ]
+  }
 }
