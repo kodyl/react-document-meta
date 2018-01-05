@@ -25,7 +25,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var document = global.document;
 
 describe('DocumentMeta - DOM basic', function () {
-
   var DOC_META = {
     title: 'This is a document title',
     description: 'This meta value is describing the page we are looking at',

@@ -37,6 +37,10 @@ function defaults(target, source) {
   }, target);
 }
 
-function forEach(arr, fn) {
-  Array.prototype.slice.call(arr || []).forEach(fn);
+// This is needed as not all browsers,
+// including Edge and IE has not implemented .forEach() on NodeList
+function forEach(nodes, fn) {
+  if (nodes && nodes.length) {
+    Array.prototype.slice.call(nodes).forEach(fn);
+  }
 }

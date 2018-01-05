@@ -21,7 +21,7 @@ var _server3 = _interopRequireDefault(_server2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 describe('DocumentMeta', function () {
-  before(function () {
+  beforeAll(function () {
     _2.default.canUseDOM = false;
   });
 
@@ -67,7 +67,7 @@ describe('DocumentMeta', function () {
   });
 
   describe('container element with children', function () {
-    it('renders the children', function () {
+    it('renders the child', function () {
       var title = 'foo';
       var markup = (0, _server.renderToStaticMarkup)(_react2.default.createElement(
         _2.default,
@@ -80,6 +80,26 @@ describe('DocumentMeta', function () {
       ));
 
       _assert2.default.strictEqual(markup, '<div>Child element</div>');
+      _assert2.default.deepEqual(_2.default.rewind(), { title: title });
+    });
+    it('renders the children, wrapped in a div if more than one child', function () {
+      var title = 'foo';
+      var markup = (0, _server.renderToStaticMarkup)(_react2.default.createElement(
+        _2.default,
+        { title: title },
+        _react2.default.createElement(
+          'div',
+          null,
+          'foo'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          'bar'
+        )
+      ));
+
+      _assert2.default.strictEqual(markup, '<div><div>foo</div><div>bar</div></div>');
       _assert2.default.deepEqual(_2.default.rewind(), { title: title });
     });
   });

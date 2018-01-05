@@ -58,11 +58,8 @@ function reducePropsTostate(propsList) {
     (0, _utils.defaults)(props, _props);
   }
 
-  // Auto props
-  if (props.auto) {
-    if (props.auto.ograph) {
-      ograph(props);
-    }
+  if (props.auto && props.auto.ograph) {
+    ograph(props);
   }
 
   return props;
@@ -70,7 +67,9 @@ function reducePropsTostate(propsList) {
 
 function handleStateChangeOnClient(props) {
   if (_dom.canUseDOM) {
-    document.title = props.title || '';
+    if (typeof props.title === 'string') {
+      document.title = props.title;
+    }
     (0, _dom.insertDocumentMeta)(getTags(props));
   }
 }
@@ -159,8 +158,8 @@ function render() {
   }
 
   return getTags(meta).reduce(function (acc, entry) {
-    tags.push(renderTag(entry));
-    return tags;
+    acc.push(renderTag(entry));
+    return acc;
   }, tags);
 }
 

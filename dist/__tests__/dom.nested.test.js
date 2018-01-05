@@ -27,7 +27,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var document = global.document;
 
 describe('DocumentMeta - DOM nested', function () {
-
   var DOC_META = {
     title: 'This is a document title',
     description: 'This meta value is describing the page we are looking at',
@@ -62,79 +61,88 @@ describe('DocumentMeta - DOM nested', function () {
   beforeEach(function () {
     _2.default.canUseDOM = true;
     (0, _dom.removeDocumentMeta)();
-    _testUtils2.default.renderIntoDocument(_react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(_2.default, DOC_META),
-      _react2.default.createElement(
+  });
+
+  describe('Basic nested', function () {
+    beforeEach(function () {
+      _testUtils2.default.renderIntoDocument(_react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_2.default, _extends({}, DOC_META_NESTED, { extend: true }))
-      )
-    ));
-  });
-
-  it('should render document.title / <title> according to the nested title-prop', function () {
-    _assert2.default.strictEqual(document.title, DOC_META_NESTED.title);
-  });
-
-  it('should render <meta name="description" content="..."> according to the nested description-prop', function () {
-    _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[name=description]', 'content'), DOC_META_NESTED.description);
-  });
-
-  it('should render <link rel="canonical" href="..." according to the nested canonical-prop', function () {
-    _assert2.default.strictEqual((0, _testUtils3.getAttr)('link[rel=canonical]', 'href'), DOC_META_NESTED.canonical);
-  });
-
-  it('should render simple meta tags, eg. <meta charset="...">', function () {
-    _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[charset]', 'charset'), DOC_META.meta.charset);
-  });
-
-  it('should render normal meta tags, eg. <meta name="..." content="...">', function () {
-    Object.keys(DOC_META.meta.name).forEach(function (name) {
-      var value = DOC_META_NESTED.meta.name.hasOwnProperty(name) ? DOC_META_NESTED.meta.name[name] : DOC_META.meta.name[name];
-      _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[name=' + name + ']', 'content'), value, '<meta name="' + name + '" ... /> has not been rendered correctly');
+        _react2.default.createElement(_2.default, DOC_META),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_2.default, _extends({}, DOC_META_NESTED, { extend: true }))
+        )
+      ));
     });
-  });
 
-  it('should render normal link tags, eg. <link rel="..." href="...">', function () {
-    Object.keys(DOC_META.link.rel).forEach(function (rel) {
-      var value = DOC_META_NESTED.link.rel.hasOwnProperty(rel) ? DOC_META_NESTED.link.rel[rel] : DOC_META.link.rel[rel];
-      var values = Array.isArray(value) ? value : [value];
+    it.only('should render document.title / <title> according to the nested title-prop', function () {
+      _assert2.default.strictEqual(document.title, DOC_META_NESTED.title);
+    });
 
-      var idx = 0;
-      var elements = (0, _testUtils3.getElements)('link[rel=' + rel + ']');
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+    it('should render <meta name="description" content="..."> according to the nested description-prop', function () {
+      _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[name=description]', 'content'), DOC_META_NESTED.description);
+    });
 
-      try {
-        for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var element = _step.value;
+    it('should render <link rel="canonical" href="..." according to the nested canonical-prop', function () {
+      _assert2.default.strictEqual((0, _testUtils3.getAttr)('link[rel=canonical]', 'href'), DOC_META_NESTED.canonical);
+    });
 
-          _assert2.default.strictEqual(element.getAttribute('href'), values[idx++], '<link rel="' + rel + '" ... /> has not been rendered correctly');
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
+    it('should render simple meta tags, eg. <meta charset="...">', function () {
+      _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[charset]', 'charset'), DOC_META.meta.charset);
+    });
+
+    it('should render normal meta tags, eg. <meta name="..." content="...">', function () {
+      Object.keys(DOC_META.meta.name).forEach(function (name) {
+        var value = DOC_META_NESTED.meta.name.hasOwnProperty(name) ? DOC_META_NESTED.meta.name[name] : DOC_META.meta.name[name];
+        _assert2.default.strictEqual((0, _testUtils3.getAttr)('meta[name=' + name + ']', 'content'), value, '<meta name="' + name + '" ... /> has not been rendered correctly');
+      });
+    });
+
+    it('should render normal link tags, eg. <link rel="..." href="...">', function () {
+      Object.keys(DOC_META.link.rel).forEach(function (rel) {
+        var value = DOC_META_NESTED.link.rel.hasOwnProperty(rel) ? DOC_META_NESTED.link.rel[rel] : DOC_META.link.rel[rel];
+        var values = Array.isArray(value) ? value : [value];
+
+        var idx = 0;
+        var elements = (0, _testUtils3.getElements)('link[rel=' + rel + ']');
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
         try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
+          for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var element = _step.value;
+
+            _assert2.default.strictEqual(element.getAttribute('href'), values[idx++], '<link rel="' + rel + '" ... /> has not been rendered correctly');
           }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
           }
         }
-      }
+      });
     });
+  });
+  it('keep document.title if none is provided to DocumentMeta', function () {
+    _testUtils2.default.renderIntoDocument(_react2.default.createElement(_2.default, null));
+    _assert2.default.strictEqual(document.title, 'Static document title');
+    _testUtils2.default.renderIntoDocument(_react2.default.createElement(_2.default, { title: 'Dynamic document title' }));
+    _assert2.default.strictEqual(document.title, 'Dynamic document title');
   });
 
   describe('Deep nesting', function () {
     beforeEach(function () {
-      _2.default.canUseDOM = true;
-      (0, _dom.removeDocumentMeta)();
       _testUtils2.default.renderIntoDocument(_react2.default.createElement(
         _2.default,
         { meta: { name: { l1: 'a' } } },
@@ -151,7 +159,7 @@ describe('DocumentMeta - DOM nested', function () {
     });
 
     it('should render inside-out, but only as long as the parent component is extendable', function () {
-      var expected = { l4: 'd', 'l3': 'c' };
+      var expected = { l4: 'd', l3: 'c' };
       var actual = {};
 
       var elements = (0, _testUtils3.getElements)('meta[name]');
