@@ -17,11 +17,11 @@ lint:
 
 test:
 	@ echo "\nTesting source files, hang on..."
-	@ NODE_ENV=test yarn test
+	@ yarn test
 
 test-dist:
 	@ echo "\nTesting build files, almost there..!"
-	@ NODE_ENV=test yarn test:dist
+	@ yarn test:dist
 
 coveralls:
 	@ cat ./coverage/lcov.info | $(BIN)/coveralls
@@ -33,12 +33,6 @@ clean:
 build: lint test clean dist test-dist
 	@ git add . && \
 		git commit -am "make build"
-
-dev:
-	@ node ./example/client-side/server.js
-
-dev-ssr:
-	@ $(BIN)/babel-node ./example/server-side/server.js
 
 release: build
 	@ npm publish

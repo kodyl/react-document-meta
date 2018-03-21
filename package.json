@@ -4,10 +4,12 @@
   "description": "Declarative, nested and stateful HTML document meta tags for React",
   "main": "./dist/index",
   "scripts": {
+    "dev": "node ./example/client-side/server.js",
+    "dev:ssr": "babel-node ./example/server-side/server.js",
     "lint": "eslint ./lib ./example",
-    "test": "jest --coverage lib/",
-    "test:watch": "jest --watch lib/",
-    "test:dist": "jest dist/"
+    "test": "NODE_ENV=test jest --coverage lib/",
+    "test:watch": "NODE_ENV=test jest --watch lib/",
+    "test:dist": "NODE_ENV=test jest dist/"
   },
   "keywords": [
     "react",
