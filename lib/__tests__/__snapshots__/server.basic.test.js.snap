@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentMeta - Server side rendering render document.title / <title> according to the title-attr 1`] = `
+"<title>This is a document title</title>
+<base href=\\"http://domain.tld\\" data-rdm/>
+<meta charset=\\"utf-8\\" data-rdm/>
+<meta name=\\"keywords\\" content=\\"react,document,meta,tags\\" data-rdm/>
+<meta name=\\"description\\" content=\\"This meta value is describing the page we are looking at\\" data-rdm/>
+<link rel=\\"stylesheet\\" href=\\"http://domain.tld/css/vendor.css\\" data-rdm/>
+<link rel=\\"stylesheet\\" href=\\"http://domain.tld/css/styles.css\\" data-rdm/>
+<link rel=\\"canonical\\" href=\\"http://domain.tld/path/to/page\\" data-rdm/>"
+`;
