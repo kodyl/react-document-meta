@@ -40,22 +40,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function reducePropsTostate(propsList) {
   var props = {};
+  var dynamicProps = {
+    title: undefined,
+    description: undefined,
+    canonical: undefined
+  };
 
   var extend = true;
 
-  for (var i = propsList.length - 1; extend && i >= 0; i--) {
+  var _loop = function _loop() {
     extend = propsList[i].hasOwnProperty('extend');
 
-    var _props = (0, _utils.clone)(propsList[i]);
+    var _props = propsList[i];
+    var _cloned = (0, _utils.clone)(propsList[i]);
+    ['title', 'description', 'canonical'].forEach(function (key) {
+      if (_props.hasOwnProperty(key)) {
+        if (typeof _props[key] === 'function') {
+          dynamicProps[key] = _props[key](dynamicProps[key]);
+        } else if (dynamicProps[key] === undefined) {
+          dynamicProps[key] = _props[key];
+        }
+      }
+    });
 
-    if (_props.hasOwnProperty('description')) {
-      (0, _utils.defaults)(_props, { meta: { name: { description: _props.description } } });
-    }
-    if (_props.hasOwnProperty('canonical')) {
-      (0, _utils.defaults)(_props, { link: { rel: { canonical: _props.canonical } } });
-    }
+    (0, _utils.defaults)(props, _cloned);
+  };
 
-    (0, _utils.defaults)(props, _props);
+  for (var i = propsList.length - 1; extend && i >= 0; i--) {
+    _loop();
+  }
+
+  if (typeof dynamicProps.title === 'string') {
+    props.title = dynamicProps.title;
+  }
+  if (typeof dynamicProps.description === 'string') {
+    (0, _utils.defaults)(props, {
+      meta: { name: { description: dynamicProps.description } }
+    });
+  }
+  if (typeof dynamicProps.canonical === 'string') {
+    (0, _utils.defaults)(props, { link: { rel: { canonical: dynamicProps.canonical } } });
   }
 
   if (props.auto && props.auto.ograph) {
@@ -190,10 +214,10 @@ var DocumentMeta = function (_Component) {
 }(_react.Component);
 
 DocumentMeta.propTypes = {
-  title: _propTypes2.default.string,
-  description: _propTypes2.default.string,
+  title: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+  description: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
+  canonical: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func]),
   base: _propTypes2.default.string,
-  canonical: _propTypes2.default.string,
   meta: _propTypes2.default.objectOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.objectOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]))])),
   link: _propTypes2.default.objectOf(_propTypes2.default.objectOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.arrayOf(_propTypes2.default.string)]))),
   auto: _propTypes2.default.objectOf(_propTypes2.default.bool)

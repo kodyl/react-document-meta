@@ -77,7 +77,7 @@ describe('DocumentMeta - DOM nested', function () {
       ));
     });
 
-    it.only('should render document.title / <title> according to the nested title-prop', function () {
+    it('should render document.title / <title> according to the nested title-prop', function () {
       _assert2.default.strictEqual(document.title, DOC_META_NESTED.title);
     });
 
@@ -134,7 +134,9 @@ describe('DocumentMeta - DOM nested', function () {
       });
     });
   });
+
   it('keep document.title if none is provided to DocumentMeta', function () {
+    document.title = 'Static document title';
     _testUtils2.default.renderIntoDocument(_react2.default.createElement(_2.default, null));
     _assert2.default.strictEqual(document.title, 'Static document title');
     _testUtils2.default.renderIntoDocument(_react2.default.createElement(_2.default, { title: 'Dynamic document title' }));
@@ -190,6 +192,57 @@ describe('DocumentMeta - DOM nested', function () {
       }
 
       _assert2.default.deepEqual(expected, actual, '<meta name="..." content="..." /> has not been rendered correctly');
+    });
+  });
+
+  describe('Nesting with functions', function () {
+    beforeEach(function () {
+      _testUtils2.default.renderIntoDocument(_react2.default.createElement(
+        _2.default,
+        {
+          title: function title(_title) {
+            return _title ? _title + ' - Example.com' : 'Example.com';
+          },
+          description: function description(desc) {
+            return desc && desc.substr(0, 25) + '...';
+          },
+          canonical: function canonical() {
+            var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '/';
+            return 'https://example.com' + path;
+          }
+        },
+        _react2.default.createElement(
+          _2.default,
+          {
+            title: 'Some page',
+            description: 'This description is too long, at least for this test',
+            canonical: '/some-path',
+            extend: true
+          },
+          _react2.default.createElement(_2.default, {
+            title: 'Another page',
+            description: 'This description is also too long, at least for this test',
+            canonical: '/another-path',
+            extend: true
+          })
+        )
+      ));
+    });
+
+    describe('title', function () {
+      it('render inside-out, and pass inner value to outer function', function () {
+        expect(document.title).toBe('Another page - Example.com');
+      });
+    });
+    describe('description', function () {
+      it('render inside-out, and pass inner value to outer function', function () {
+        expect((0, _testUtils3.getAttr)('meta[name=description]', 'content')).toBe('This description is also ...');
+      });
+    });
+    describe('canonical', function () {
+      it('render inside-out, and pass inner value to outer function', function () {
+        expect((0, _testUtils3.getAttr)('link[rel=canonical]', 'href')).toBe('https://example.com/another-path');
+      });
     });
   });
 });
