@@ -34,9 +34,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function reducePropsTostate(propsList) {
   var props = {};
@@ -84,6 +84,16 @@ function reducePropsTostate(propsList) {
 
   if (props.auto && props.auto.ograph) {
     ograph(props);
+  }
+
+  if (props.meta && props.meta.charset && !props.meta.charSet) {
+    var _props$meta = props.meta,
+        charset = _props$meta.charset,
+        meta = _objectWithoutProperties(_props$meta, ['charset']);
+
+    props.meta = _extends({
+      charSet: charset
+    }, meta);
   }
 
   return props;
@@ -151,7 +161,7 @@ function parseTags(tagName) {
 }
 
 function getTags(_props) {
-  return [].concat(parseTags('meta', _props.meta), parseTags('link', _props.link));
+  return [].concat(_props.base ? [{ tagName: 'base', href: _props.base }] : [], parseTags('meta', _props.meta), parseTags('link', _props.link));
 }
 
 function render() {
@@ -164,11 +174,11 @@ function render() {
     var tagName = entry.tagName,
         attr = _objectWithoutProperties(entry, ['tagName']);
 
-    if (tagName === 'meta') {
-      return _react2.default.createElement('meta', _extends({}, attr, { key: i++, 'data-rdm': true }));
-    }
-    if (tagName === 'link') {
-      return _react2.default.createElement('link', _extends({}, attr, { key: i++, 'data-rdm': true }));
+    if (tagName === 'meta' || tagName === 'link' || tagName === 'base') {
+      return _react2.default.createElement(tagName, _extends({}, attr, {
+        key: i++,
+        'data-rdm': true
+      }));
     }
     return null;
   }
@@ -181,10 +191,7 @@ function render() {
     ));
   }
 
-  return getTags(meta).reduce(function (acc, entry) {
-    acc.push(renderTag(entry));
-    return acc;
-  }, tags);
+  return tags.concat(getTags(meta).map(renderTag));
 }
 
 var DocumentMeta = function (_Component) {

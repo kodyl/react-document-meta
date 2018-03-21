@@ -29,6 +29,7 @@ describe('DocumentMeta - DOM basic', function () {
     title: 'This is a document title',
     description: 'This meta value is describing the page we are looking at',
     canonical: 'http://domain.tld/path/to/page',
+    base: 'http://domain.tld',
     meta: {
       charset: 'utf-8',
       name: {
@@ -58,6 +59,10 @@ describe('DocumentMeta - DOM basic', function () {
 
   it('should render <link rel="canonical" href="..." according to the canonical-attr', function () {
     _assert2.default.strictEqual((0, _testUtils3.getAttr)('link[rel=canonical]', 'href'), DOC_META.canonical);
+  });
+
+  it('render <base href="..."> according to the base-attr', function () {
+    expect((0, _testUtils3.getAttr)('base', 'href')).toBe(DOC_META.base);
   });
 
   it('should render simple meta tags, eg. <meta charset="...">', function () {
