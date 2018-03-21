@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint ./lib ./example",
     "test": "jest --coverage lib/",
+    "test:watch": "jest --watch lib/",
     "test:dist": "jest dist/"
   },
   "keywords": [
