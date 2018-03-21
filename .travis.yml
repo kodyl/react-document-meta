@@ -3,6 +3,5 @@ node_js:
   - 'node'
   - '8'
   - '6'
-  - '4'
 after_script:
   - make coveralls
